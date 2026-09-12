@@ -120,6 +120,19 @@ struct EeveeSettingsView: View {
 
             Button {
                 pushSettingsController(
+                    with: SpotiPWSettingsView(navigationController: navigationController),
+                    title: "spotipw".localized
+                )
+            } label: {
+                NavigationSectionView(
+                    color: Color(hex: "#7DF9AA"),
+                    title: "spotipw".localized,
+                    imageSystemName: "drop.circle.fill"
+                )
+            }
+
+            Button {
+                pushSettingsController(
                     with: EeveeAppIconPickerView(),
                     title: "appIcon".localized
                 )

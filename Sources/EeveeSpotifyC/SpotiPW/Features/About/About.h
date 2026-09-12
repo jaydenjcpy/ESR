@@ -1,0 +1,26 @@
+// About: where the build points its user, and whether the site has a newer one (Update.m). The
+// status is a string for the Updates row; the page's ticker reads it, so the check needs no
+// callback. SGCheckForUpdate(NO) respects a six hour cache, SGCheckForUpdate(YES) always asks.
+#import <UIKit/UIKit.h>
+#import "Settings/SGModPage.h"
+
+extern NSString *const SGSiteURL;
+extern NSString *const SGRepoURL;
+extern NSString *const SGUpdateURL;
+NSString *SGUpdateVersion(void);  // nil unless the site has one newer than this build
+NSString *SGUpdateNotes(void);
+NSString *SGUpdateStatus(void);
+void SGCheckForUpdate(BOOL force);
+
+
+// Whether the now playing card on the lock screen can open this build. It depends on the signature,
+// not on the mod: iOS launches by the App ID of the application-identifier entitlement, so a build
+// whose bundle id is not that App ID cannot be opened from the card. Signing.m says so once.
+extern NSString *const SGSigningHelpURL;
+NSString *SGSigningAppIdentifier(void);      // App ID without the team prefix, nil if unreadable
+BOOL SGSigningOpensFromLockScreen(void);     // YES when unreadable, so a build that works stays quiet
+SGModRow *SGSigningWarningRow(void);          // nil while the signature is sound
+void SGCheckSigningOnce(void);
+void SGShowSigningFixIfPending(void);   // the sheet the tour held back, if any
+
+UIViewController *SGAboutPage(void);   // the Mod page

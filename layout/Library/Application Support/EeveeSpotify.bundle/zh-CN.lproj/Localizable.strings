@@ -285,3 +285,20 @@ managingSegmentsSectionDeps2 = "设置 → “上报与草稿” 中存放你未
 categoriesTitle = "分类";
 categoriesSectionTitle1 = "按分类设置操作";
 categoriesSectionDeps1 = "关闭 = 忽略。显示 = 仅在进度条上标记。手动 = 跳过前询问。自动 = 静默跳过。";
+
+/* spoti.pw — features vendored from https://github.com/skopevoj/spoti.pw (GPL-3.0).
+   Translations welcome; English values are the defaults. */
+"spotipw" = "spoti.pw";
+"spotipw_section_footer" = "Features vendored from spoti.pw: Liquid Glass, AMOLED, home gradient, tab bar editor, gestures, hiding and Spotify flags. Most switches apply after Spotify restarts.";
+"spotipw_view_source" = "View source on GitHub";
+"spotipw_page_unavailable" = "This page is unavailable in this build.";
+"spotipw_glass" = "Liquid Glass";
+"spotipw_navbar" = "Tab bar";
+"spotipw_home" = "Home & Library";
+"spotipw_player" = "Player";
+"spotipw_playlist" = "Playlist";
+"spotipw_gestures" = "Gestures";
+"spotipw_privacy" = "Premium & ads";
+"spotipw_labs" = "Labs";
+"spotipw_flags" = "All flags";
+"spotipw_about" = "About spoti.pw";

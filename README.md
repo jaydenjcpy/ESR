@@ -122,6 +122,17 @@ Thanks for all of the community's support, also, thanks to all the devs who work
 
 - This project is a fork of [Meeep1/EeveeSpotifyRevivedPublic](https://github.com/Meeep1/EeveeSpotifyRevivedPublic).
 
+## spoti.pw
+
+The Liquid Glass UI, AMOLED theme, home gradient, tab bar editor, player gestures, hiding
+options, Spotify remote-config flag overrides, telemetry blocking and more are vendored from
+[spoti.pw](https://github.com/skopevoj/spoti.pw) by vojta ([@skopevoj](https://github.com/skopevoj)),
+GPL-3.0, and appear in EeveeSpotify settings under **spoti.pw**. spoti.pw's ad blocking and
+Premium spoofing are not compiled in — ESR's own implementations stay authoritative. The
+license copy and the exact upstream commit live in `Sources/EeveeSpotifyC/SpotiPW/`
+(`LICENSE`, `UPSTREAM_COMMIT`); the flag table is regenerated from your own IPA at build time
+by `Tools/SpotiPW/extract-flags.py`.
+
 ## Disclaimer
 
 This project is an **independent modification (tweak)** for the Spotify app. We are **not affiliated, associated, authorized, endorsed by, or in any way officially connected with Spotify**, or any of its subsidiaries or affiliates. 

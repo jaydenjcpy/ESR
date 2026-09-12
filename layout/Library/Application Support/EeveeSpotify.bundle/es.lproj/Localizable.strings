@@ -151,3 +151,20 @@ debug_log_cleared_ok = "Vale";
 no_debug_log_found = "No se encontró archivo de depuración. El registro comienza a grabarse cuando se inicia la aplicación.";
 no_debug_log_found_ok = "Vale";
 debug_section_footer = "Exportar o limpiar el archivo de depuración.";
+
+/* spoti.pw — features vendored from https://github.com/skopevoj/spoti.pw (GPL-3.0).
+   Translations welcome; English values are the defaults. */
+"spotipw" = "spoti.pw";
+"spotipw_section_footer" = "Features vendored from spoti.pw: Liquid Glass, AMOLED, home gradient, tab bar editor, gestures, hiding and Spotify flags. Most switches apply after Spotify restarts.";
+"spotipw_view_source" = "View source on GitHub";
+"spotipw_page_unavailable" = "This page is unavailable in this build.";
+"spotipw_glass" = "Liquid Glass";
+"spotipw_navbar" = "Tab bar";
+"spotipw_home" = "Home & Library";
+"spotipw_player" = "Player";
+"spotipw_playlist" = "Playlist";
+"spotipw_gestures" = "Gestures";
+"spotipw_privacy" = "Premium & ads";
+"spotipw_labs" = "Labs";
+"spotipw_flags" = "All flags";
+"spotipw_about" = "About spoti.pw";

@@ -286,3 +286,20 @@ managingSegmentsSectionDeps2 = "Cài đặt ➔ 'Báo cáo & bản nháp' lưu g
 categoriesTitle = "Các danh mục";
 categoriesSectionTitle1 = "Hành động theo từng danh mục";
 categoriesSectionDeps1 = "Tắt = bỏ qua. Hiển thị = chỉ vẽ trên thanh tiến trình. Thủ công = nhắc trước khi bỏ qua. Tự động = bỏ qua trong im lặng.";
+
+/* spoti.pw — features vendored from https://github.com/skopevoj/spoti.pw (GPL-3.0).
+   Translations welcome; English values are the defaults. */
+"spotipw" = "spoti.pw";
+"spotipw_section_footer" = "Features vendored from spoti.pw: Liquid Glass, AMOLED, home gradient, tab bar editor, gestures, hiding and Spotify flags. Most switches apply after Spotify restarts.";
+"spotipw_view_source" = "View source on GitHub";
+"spotipw_page_unavailable" = "This page is unavailable in this build.";
+"spotipw_glass" = "Liquid Glass";
+"spotipw_navbar" = "Tab bar";
+"spotipw_home" = "Home & Library";
+"spotipw_player" = "Player";
+"spotipw_playlist" = "Playlist";
+"spotipw_gestures" = "Gestures";
+"spotipw_privacy" = "Premium & ads";
+"spotipw_labs" = "Labs";
+"spotipw_flags" = "All flags";
+"spotipw_about" = "About spoti.pw";

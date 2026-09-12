@@ -15,10 +15,20 @@ BRANCH_NAME_FINAL := $(if $(BRANCH_NAME),$(BRANCH_NAME),Master)
 $(shell mkdir -p Sources/EeveeSpotify/Generated)
 $(shell printf 'enum GeneratedConfig {\n    static let repoSlug = "%s"\n    static let branchName = "%s"\n}\n' "$(REPO_SLUG_FINAL)" "$(BRANCH_NAME_FINAL)" > Sources/EeveeSpotify/Generated/RepoSlug.swift)
 
-EeveeSpotify_FILES = $(shell find Sources/EeveeSpotify -name '*.swift') $(shell find Sources/EeveeSpotifyC -name '*.m' -o -name '*.c' -o -name '*.mm' -o -name '*.cpp')
+# spoti.pw (vendored under Sources/EeveeSpotifyC/SpotiPW) ships Logos .x files, so
+# ObjC sources are found by .m/.x/.c/.mm/.cpp. The vendored code includes its headers as
+# "Core/SGCore.h" etc. relative to the SpotiPW root, hence the extra include path.
+SPOTIPW_VERSION := $(shell sed -n 's/^Version: //p' Sources/EeveeSpotifyC/SpotiPW/control)
+SPOTIPW_VERSION_FINAL := $(if $(SPOTIPW_VERSION),$(SPOTIPW_VERSION),0.0.0)
+
+EeveeSpotify_FILES = $(shell find Sources/EeveeSpotify -name '*.swift') $(shell find Sources/EeveeSpotifyC \( -name '*.m' -o -name '*.x' -o -name '*.c' -o -name '*.mm' -o -name '*.cpp' \))
 EeveeSpotify_SWIFTFLAGS = -ISources/EeveeSpotifyC/include -Osize
 EeveeSpotify_EXTRA_FRAMEWORKS = EeveeSwiftProtobuf
-EeveeSpotify_CFLAGS = -fobjc-arc -ISources/EeveeSpotifyC/include -Os
+EeveeSpotify_CFLAGS = -fobjc-arc -ISources/EeveeSpotifyC/include -ISources/EeveeSpotifyC/SpotiPW -Os -DSG_VERSION=\"$(SPOTIPW_VERSION_FINAL)\"
+EeveeSpotify_FRAMEWORKS = UIKit QuartzCore
+# The dylib is injected into sideloaded IPAs where libsubstrate does not exist, so the
+# vendored spoti.pw Logos hooks must use the internal (runtime-swizzling) generator.
+EeveeSpotify_LOGOS_DEFAULT_GENERATOR = internal
 
 # RootHide's compatibility implementation of libroot resolves jailbreak paths
 # through libroothide at runtime. Rootless builds continue to use libroot.
@@ -60,3 +70,11 @@ internal-stage::
 # or `swift --version` jumps a major.
 build-eeveeswiftprotobuf:
 	Tools/SwiftProtobufBuild/build-eeveeswiftprotobuf.sh
+
+# Regenerate the spoti.pw remote-config flag table from a decrypted Spotify IPA.
+# Usage: make spotipw-flags IPA=path/to/Spotify-Decrypted.ipa
+# build-ipa-local.sh and the IPA workflows run this automatically against the IPA
+# being built; .deb-only builds keep the committed placeholder (empty All flags page).
+spotipw-flags:
+	@[ -n "$(IPA)" ] || { echo "usage: make spotipw-flags IPA=path/to/Spotify-Decrypted.ipa" >&2; exit 1; }
+	python3 Tools/SpotiPW/extract-flags.py "$(IPA)"

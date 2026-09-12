@@ -68,6 +68,22 @@ jobs:
           chmod +x Tools/SwiftProtobufBuild/build-eeveeswiftprotobuf.sh
           Tools/SwiftProtobufBuild/build-eeveeswiftprotobuf.sh
 
+      # The IPA has to be fetched before the .deb build: the spoti.pw flag table is
+      # extracted from the vanilla IPA and compiled into the dylib.
+      - name: Validate vanilla IPA
+        if: ${{ inputs.ipa_url != '' }}
+        run: |
+          wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/spotify.ipa
+          file_type=$(file --mime-type -b ${{ github.workspace }}/spotify.ipa)
+          if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
+            echo "::error::Not a valid IPA: $file_type"
+            exit 1
+          fi
+
+      - name: Regenerate spoti.pw flag table from the vanilla IPA
+        if: ${{ inputs.ipa_url != '' }}
+        run: python3 Tools/SpotiPW/extract-flags.py ${{ github.workspace }}/spotify.ipa
+
       - name: Build .deb (rootless)
         env:
           REPO_SLUG: ${{ github.repository }}
@@ -88,16 +104,6 @@ jobs:
       # ─── IPA build (only when ipa_url is provided) ───────────────────
       
       - uses: levibostian/action-hide-sensitive-inputs@v1
-
-      - name: Validate vanilla IPA
-        if: ${{ inputs.ipa_url != '' }}
-        run: |
-          wget "${{ inputs.ipa_url }}" --no-verbose -O ${{ github.workspace }}/spotify.ipa
-          file_type=$(file --mime-type -b ${{ github.workspace }}/spotify.ipa)
-          if [[ "$file_type" != "application/x-ios-app" && "$file_type" != "application/zip" ]]; then
-            echo "::error::Not a valid IPA: $file_type"
-            exit 1
-          fi
 
       - name: Build zxPluginsInject.dylib
         if: ${{ inputs.ipa_url != '' }}

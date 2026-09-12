@@ -139,3 +139,20 @@ play_songs_in_any_order = "好きな曲順で再生";
 organize_listening_queue = "次に再生する楽曲のリストを整理できる";
 
 payment_notice = "EeveeSpotifyは、無料で一部のプレミアムの機能を使えるようにするパッチを適用します。";
+
+/* spoti.pw — features vendored from https://github.com/skopevoj/spoti.pw (GPL-3.0).
+   Translations welcome; English values are the defaults. */
+"spotipw" = "spoti.pw";
+"spotipw_section_footer" = "Features vendored from spoti.pw: Liquid Glass, AMOLED, home gradient, tab bar editor, gestures, hiding and Spotify flags. Most switches apply after Spotify restarts.";
+"spotipw_view_source" = "View source on GitHub";
+"spotipw_page_unavailable" = "This page is unavailable in this build.";
+"spotipw_glass" = "Liquid Glass";
+"spotipw_navbar" = "Tab bar";
+"spotipw_home" = "Home & Library";
+"spotipw_player" = "Player";
+"spotipw_playlist" = "Playlist";
+"spotipw_gestures" = "Gestures";
+"spotipw_privacy" = "Premium & ads";
+"spotipw_labs" = "Labs";
+"spotipw_flags" = "All flags";
+"spotipw_about" = "About spoti.pw";
