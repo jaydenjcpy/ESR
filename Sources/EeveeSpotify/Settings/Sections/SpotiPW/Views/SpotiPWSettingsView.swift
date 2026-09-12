@@ -69,7 +69,7 @@ struct SpotiPWSettingsView: View {
 
     private static let entries: [Entry] = [
         Entry(page: "appearance", titleKey: titles[0], color: Color(hex: "#64D2FF"), systemImage: "drop.fill"),
-        Entry(page: "navbar",     titleKey: titles[1], color: .cyan,      systemImage: "dock.rectangle"),
+        Entry(page: "navbar",     titleKey: titles[1], color: Color(hex: "#32ADE6"), systemImage: "dock.rectangle"),
         Entry(page: "home",       titleKey: titles[2], color: .green,     systemImage: "house.fill"),
         Entry(page: "player",     titleKey: titles[3], color: .purple,    systemImage: "play.circle.fill"),
         Entry(page: "playlist",   titleKey: titles[4], color: .blue,      systemImage: "music.note.list"),
