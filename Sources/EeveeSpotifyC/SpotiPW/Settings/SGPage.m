@@ -20,7 +20,9 @@ static BOOL sg_pagesConform;
     self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
     self.tableView.backgroundColor = SGPageBackground();
     self.tableView.separatorColor = [UIColor colorWithWhite:1 alpha:0.1];
+    if (@available(iOS 15.0, *)) {
     self.tableView.sectionHeaderTopPadding = 0;
+}
 }
 
 - (NSString *)spt_pageIdentifier {
