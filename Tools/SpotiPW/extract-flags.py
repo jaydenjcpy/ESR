@@ -12,9 +12,9 @@ the leaf calls inlined recovers key, type and default for nearly every flag.
 import plistlib, re, struct, subprocess, sys, tempfile, zipfile
 from pathlib import Path
 
-# Vendored from spoti.pw (github.com/skopevoj/spoti.pw). ROOT now points two levels up
-# (the ESR repo root), so the output path below targets the vendored source tree.
-ROOT = Path(__file__).resolve().parent.parent
+# Vendored from spoti.pw (github.com/skopevoj/spoti.pw). ROOT points three levels up
+# (Tools/SpotiPW/ -> the ESR repo root), so the output path below targets the vendored source tree.
+ROOT = Path(__file__).resolve().parent.parent.parent
 BASE = 0x100000000
 SELS = {'boolValueForId:defaultValue:': 'Bool', 'intValueForId:lower:upper:defaultValue:': 'Int',
         'enumValueForId:values:defaultValue:': 'Enum'}
